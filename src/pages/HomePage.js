@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap"
 import React from "react"
 import Select from "../components/HomePageComponents/Select"
+import MovieDetailsCard from "../components/HomePageComponents/MovieDetailsCard"
 
 export default function HomePage() {
   return (
@@ -14,6 +15,11 @@ export default function HomePage() {
         </Col>
         <Col>
           <Select title="Series/Film" />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <MovieDetailsCard />
         </Col>
       </Row>
     </Container>
