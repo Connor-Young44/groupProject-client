@@ -12,11 +12,23 @@ export default function MovieDetailsCard(props) {
         />
         <Card.ImgOverlay>
           <Card.Title
-            style={{ position: "absolute", top: "240px", fontSize: "2rem" }}
+            style={{ position: "absolute", bottom: "150px", fontSize: "2rem" }}
           >
             Dragon Ball Z - The movie
           </Card.Title>
-          <Card.Text></Card.Text>
+          <Card.Text
+            style={{
+              fontSize: "1rem",
+              textAlign: "left",
+              position: "absolute",
+              bottom: "80px",
+            }}
+          >
+            Natoque penatibus et magnis dis parturient montes nascetur ridiculus
+            mus mauris vitae ultricies leo integer malesuada nunc vel risus
+            commodo viverra maecenas accumsan lacus vel facilisis volutpat est
+            velit egestas
+          </Card.Text>
           <Card.Text></Card.Text>
           <Button
             variant="light"
