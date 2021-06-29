@@ -1,18 +1,18 @@
-import { Switch, Route } from "react-router-dom"
-import { Container, Row, Col } from "react-bootstrap"
-import SignupPage from "./pages/SignupPage"
-import LoginPage from "./pages/LoginPage"
-import HomePage from "./pages/HomePage"
-import MovieList from "./components/HomePageComponents/MovieList"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "./App.css"
-import NavBar from "./components/NavBar"
+import { Switch, Route } from "react-router-dom";
+
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
+import MovieList from "./components/HomePageComponents/MovieList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <header className="App-header">
+      <header className="App-body">
         <Switch>
           <Route path="/signup" component={SignupPage} />
           <Route path="/login" component={LoginPage} />
@@ -33,7 +33,7 @@ function App() {
         </div>
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
