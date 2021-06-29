@@ -1,5 +1,7 @@
-import axios from "axios"
-import React, { useState } from "react"
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, signup } from "../store/actions/user";
 import {
   Navbar,
   Nav,
@@ -9,20 +11,23 @@ import {
   Container,
   Row,
   Col,
-} from "react-bootstrap"
+} from "react-bootstrap";
 
 export default function NavBar() {
-  const [loginMode, setLoginMode] = useState(true)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const dispatch = useDispatch();
+  const [loginMode, setLoginMode] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = async () => {
+  function handleSubmit(event) {
+    event.preventDefault();
     if (loginMode) {
-      await axios.post("/login")
+      dispatch(login(email, password));
     } else {
-      await axios.post("/signup")
+      dispatch(signup(email, password));
     }
   }
+
   return (
     <div>
       {/* <Navbar bg="dark" variant="dark">
@@ -89,7 +94,7 @@ export default function NavBar() {
                   padding: "5px 0 0",
                 }}
                 onClick={() => {
-                  setLoginMode(!loginMode)
+                  setLoginMode(!loginMode);
                 }}
               >
                 {loginMode ? "Click here to Sign Up" : "Click here to Login"}
@@ -105,5 +110,5 @@ export default function NavBar() {
         </Navbar.Collapse>
       </Navbar> */}
     </div>
-  )
+  );
 }
