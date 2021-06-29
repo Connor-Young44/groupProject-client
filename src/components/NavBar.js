@@ -1,48 +1,28 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { login, signup } from "../store/actions/user";
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
+import React, { useState } from "react";
+import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import "./NavBar.css";
 
 export default function NavBar() {
-  const dispatch = useDispatch();
   const [loginMode, setLoginMode] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  const handleSubmit = async () => {
     if (loginMode) {
-      dispatch(login(email, password));
+      await axios.post("/login");
     } else {
-      dispatch(signup(email, password));
+      await axios.post("/signup");
     }
-  }
-
+  }; 
   return (
     <div>
-      {/* <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">MOVIE PROJECT</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/login">Login</Nav.Link>
-          <Nav.Link href="/signup">Signup</Nav.Link>
-        </Nav>
-      </Navbar> */}
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar expand="lg" className="navBar">
         <Navbar.Brand href="#home">
           <img
             style={{ width: "100px" }}
             src="https://lh3.googleusercontent.com/proxy/vkIVaGYMY2ZHAg3iWofRfm-NLGbwRwnq8EvkIle8CglpwAJeJ4Fd5DXg7LcqZVYXu3doMItf_HQ2gGkDi7BUdhCj2yWH6mOrIHVwr1KkfCjVi7XFq4DRamVwz1jqQV4liBQOqtg"
+            alt="movie poster"
           ></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -69,7 +49,7 @@ export default function NavBar() {
                   <>
                     <Button
                       type="submit"
-                      variant="outline-success"
+                      variant="outline-danger"
                       style={{ width: "80px" }}
                     >
                       Login
@@ -88,11 +68,8 @@ export default function NavBar() {
             </div>
             <div style={{ textAlign: "right" }}>
               <Button
+                className="sign-up-button"
                 variant="link"
-                style={{
-                  fontSize: "0.7rem",
-                  padding: "5px 0 0",
-                }}
                 onClick={() => {
                   setLoginMode(!loginMode);
                 }}
@@ -103,12 +80,6 @@ export default function NavBar() {
           </div>
         </Navbar.Collapse>
       </Navbar>
-      {/* <Navbar bg="dark" variant="dark" expand="sm">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto"></Nav>
-        </Navbar.Collapse>
-      </Navbar> */}
     </div>
   );
 }

@@ -1,37 +1,26 @@
-import { Switch, Route } from "react-router-dom"
-import { Container, Row, Col } from "react-bootstrap"
-import SignupPage from "./pages/SignupPage"
-import LoginPage from "./pages/LoginPage"
+import { useState } from "react"
 import HomePage from "./pages/HomePage"
-import MovieList from "./components/HomePageComponents/MovieList"
+import WatchList from "./components/HomePageComponents/WatchList"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
 import NavBar from "./components/NavBar"
 
 function App() {
+  const [watchListMode, setWatchListMode] = useState(true)
   return (
     <div className="App">
       <NavBar />
-      <header className="App-header">
-        <Switch>
-          <Route path="/signup" component={SignupPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/" component={HomePage} exact />
-        </Switch>
-        <div
-          className="movie-list"
-          style={{
-            position: "absolute",
-            top: "0",
-            height: "100%",
-            right: "0",
-            minWidth: "100px",
-            backgroundColor: "red",
-          }}
-        >
-          <MovieList />
+      <div className="App-body">
+        <div className="page-layout">
+          <HomePage />
         </div>
-      </header>
+
+        {watchListMode && (
+          <div className="side-bar">
+            <WatchList />
+          </div>
+        )}
+      </div>
     </div>
   )
 }

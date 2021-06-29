@@ -1,0 +1,45 @@
+.watch-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+.watch-list-title {
+  margin-bottom: 50px;
+}
+
+.watch-list-title h2 {
+  font-size: 2rem;
+}
+
+.watch-list-title p {
+  font-size: 1rem;
+  color: #888;
+}
+
+.watch-list-item h3 {
+  margin: 0 10px 0 0;
+  font-size: 1rem;
+}
+
+.to-watch {
+  color: #da0037 !important;
+  border: 1px solid #da0037 !important;
+  background-color: transparent !important;
+}
+
+.to-watch:hover {
+  color: #fff !important;
+  border: 1px solid #da0037 !important;
+  background-color: #da0037 !important;
+}
+
+.watched {
+  color: #fff !important;
+  border: 1px solid #519872 !important;
+  background-color: #519872 !important;
+}
+
+.watched:hover {
+  opacity: 0.8;
+}
