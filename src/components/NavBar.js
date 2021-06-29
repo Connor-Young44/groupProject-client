@@ -1,20 +1,23 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import "./NavBar.css";
+import { login, signup } from "../store/actions/user";
 
 export default function NavBar() {
   const [loginMode, setLoginMode] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
-  const handleSubmit = async () => {
+  function handleSubmit(event) {
+    event.preventDefault();
     if (loginMode) {
-      await axios.post("/login");
+      dispatch(login(email, password));
     } else {
-      await axios.post("/signup");
+      dispatch(signup(email, password));
     }
-  }; 
+  }
   return (
     <div>
       <Navbar expand="lg" className="navBar">
