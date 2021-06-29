@@ -14,7 +14,7 @@ export default function NavBar() {
     } else {
       await axios.post("/signup");
     }
-  };
+  }; 
   return (
     <div>
       <Navbar expand="lg" className="navBar">
