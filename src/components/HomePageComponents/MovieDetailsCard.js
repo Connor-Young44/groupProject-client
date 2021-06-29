@@ -1,5 +1,5 @@
-import React from "react"
-import { Card, Button } from "react-bootstrap"
+import React from "react";
+import { Card, Button } from "react-bootstrap";
 
 export default function MovieDetailsCard(props) {
   return (
@@ -21,9 +21,18 @@ export default function MovieDetailsCard(props) {
               width: "50%",
               position: "absolute",
               bottom: "5%",
+              backgroundColor: "#2b2727b0",
+              padding: "15px",
+              borderRadius: "25px",
             }}
           >
-            <Card.Title style={{ fontSize: "2rem" }}>
+            <Card.Title
+              style={{
+                fontSize: "2rem",
+
+                padding: "5px",
+              }}
+            >
               {/* Prop title */}
               Dragon Ball Z - The movie
             </Card.Title>
@@ -59,5 +68,5 @@ export default function MovieDetailsCard(props) {
         </Card.ImgOverlay>
       </Card>
     </div>
-  )
+  );
 }

@@ -1,16 +1,16 @@
-import { useState } from "react"
-import HomePage from "./pages/HomePage"
-import WatchList from "./components/HomePageComponents/WatchList"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "./App.css"
-import NavBar from "./components/NavBar"
+import { useState } from "react";
+import HomePage from "./pages/HomePage";
+import WatchList from "./components/HomePageComponents/WatchList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import NavBar from "./components/NavBar";
 
 function App() {
-  const [watchListMode, setWatchListMode] = useState(true)
+  const [watchListMode, setWatchListMode] = useState(true);
   return (
     <div className="App">
       <NavBar />
-      <header className="App-header">
+      <header className="App-body">
         <div>
           <HomePage
             style={{
@@ -36,7 +36,7 @@ function App() {
         )}
       </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

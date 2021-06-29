@@ -1,7 +1,8 @@
-import { Container, Row, Col, Button } from "react-bootstrap"
-import React from "react"
-import Select from "../components/HomePageComponents/Select"
-import MovieDetailsCard from "../components/HomePageComponents/MovieDetailsCard"
+import { Container, Row, Col } from "react-bootstrap";
+import React from "react";
+import Select from "../components/HomePageComponents/Select";
+import MovieDetailsCard from "../components/HomePageComponents/MovieDetailsCard";
+import "./HomePage.css";
 
 export default function HomePage() {
   return (
@@ -23,14 +24,14 @@ export default function HomePage() {
         </Col>
       </Row>
       <Row>
-        <Button
-          type="submit"
-          variant="danger"
-          style={{ width: "200px", height: "100px" }}
-        >
-          Generate Series
-        </Button>
+        <button className="custom-button">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          randomize!
+        </button>
       </Row>
     </Container>
-  )
+  );
 }

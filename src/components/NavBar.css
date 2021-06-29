@@ -1,0 +1,15 @@
+.navBar {
+  background-color: #444444;
+  color: #ededed;
+  border-bottom: solid red 2px;
+}
+
+.sign-up-button {
+  font-size: 1rem;
+  padding: 5px 0 0;
+  color: #da0037;
+}
+
+.sign-up-button:hover {
+  color: #ededed;
+}
