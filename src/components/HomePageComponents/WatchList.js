@@ -4,17 +4,20 @@ import "./WatchList.css"
 
 export default function WatchList() {
   const movieList = [
-    { title: "Spider Man" },
-    { title: "Spider Man" },
-    { title: "Spider Man" },
-    { title: "Spider Man" },
-    { title: "Spider Man" },
-    { title: "Spider Man" },
-    { title: "Spider Man" },
+    { title: "Spider Man", status: false },
+    { title: "Spider Man", status: false },
+    {
+      title: "Spider Man is the best hero ever forever whenever",
+      status: false,
+    },
+    { title: "Spider Man", status: true },
+    { title: "Spider Man", status: false },
+    { title: "Spider Man", status: true },
+    { title: "Spider Man", status: false },
   ]
 
   return (
-    <div style={{ margin: "0 20px" }}>
+    <div className="watch-list" style={{ margin: "0 20px" }}>
       <div className="watch-list-title">
         <h2>Watch List</h2>
         <p>
@@ -26,14 +29,22 @@ export default function WatchList() {
       <ListGroup variant="flush">
         {movieList.map((item) => (
           <ListGroup.Item
-            style={{ margin: "10px", backgroundColor: "transparent" }}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderBottom: "1px solid #000",
+              padding: "20px 0",
+              backgroundColor: "transparent",
+            }}
           >
-            <Row>
-              <h3 style={{ fontSize: "1.2rem", marginRight: "20px" }}>
-                {item.title}
-              </h3>
-              <Button className="watch-list-button ">Watched</Button>
-            </Row>
+            <div className="watch-list-item">
+              <h3>{item.title}</h3>
+            </div>
+
+            <Button className={item.status ? "watched" : "to-watch"}>
+              Watched
+            </Button>
           </ListGroup.Item>
         ))}
       </ListGroup>

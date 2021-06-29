@@ -1,5 +1,10 @@
+.watch-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
 .watch-list-title {
-  text-align: center;
   margin-bottom: 50px;
 }
 
@@ -12,14 +17,29 @@
   color: #888;
 }
 
-.watch-list-button {
-  color: #da0037;
-  border: 1px solid #da0037;
-  background-color: transparent;
+.watch-list-item h3 {
+  margin: 0 10px 0 0;
+  font-size: 1rem;
 }
 
-.watch-list-button:hover {
-  color: #fff;
-  border: 1px solid #da0037;
-  background-color: #da0037;
+.to-watch {
+  color: #da0037 !important;
+  border: 1px solid #da0037 !important;
+  background-color: transparent !important;
+}
+
+.to-watch:hover {
+  color: #fff !important;
+  border: 1px solid #da0037 !important;
+  background-color: #da0037 !important;
+}
+
+.watched {
+  color: #fff !important;
+  border: 1px solid #519872 !important;
+  background-color: #519872 !important;
+}
+
+.watched:hover {
+  opacity: 0.8;
 }
