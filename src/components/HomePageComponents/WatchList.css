@@ -1,0 +1,25 @@
+.watch-list-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.watch-list-title h2 {
+  font-size: 2rem;
+}
+
+.watch-list-title p {
+  font-size: 1rem;
+  color: #888;
+}
+
+.watch-list-button {
+  color: #da0037;
+  border: 1px solid #da0037;
+  background-color: transparent;
+}
+
+.watch-list-button:hover {
+  color: #fff;
+  border: 1px solid #da0037;
+  background-color: #da0037;
+}

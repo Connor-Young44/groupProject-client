@@ -33,12 +33,19 @@ export default function NavBar() {
           <Nav.Link href="/signup">Signup</Nav.Link>
         </Nav>
       </Navbar> */}
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar
+        style={{
+          backgroundColor: "#171717",
+          borderBottom: "2px solid #DA0037",
+        }}
+        expand="lg"
+      >
         <Navbar.Brand href="#home">
           <img
             style={{ width: "100px" }}
             src="https://lh3.googleusercontent.com/proxy/vkIVaGYMY2ZHAg3iWofRfm-NLGbwRwnq8EvkIle8CglpwAJeJ4Fd5DXg7LcqZVYXu3doMItf_HQ2gGkDi7BUdhCj2yWH6mOrIHVwr1KkfCjVi7XFq4DRamVwz1jqQV4liBQOqtg"
           ></img>
+          PopCorn
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
