@@ -6,7 +6,7 @@ import NavBarInput from "./NavBarInput"
 
 export default function NavBar() {
   const user = useSelector(selectUser)
-  const nameFromEmail = user.email.split("@")
+
   return (
     <div>
       <Navbar expand="lg" className="navBar">
@@ -23,7 +23,7 @@ export default function NavBar() {
 
           {user.email ? (
             <>
-              <h5>Welcome {nameFromEmail[0]}</h5>
+              <h5>Welcome {user.email.split("@")[0]}</h5>
               <Button
                 variant="outline-danger"
                 style={{ width: "80px", marginLeft: "20px" }}
