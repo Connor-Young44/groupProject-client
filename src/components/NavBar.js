@@ -1,11 +1,13 @@
-import { useSelector } from "react-redux"
-import { Navbar, Nav, Button } from "react-bootstrap"
-import "./NavBar.css"
-import { selectUser } from "../store/selectors/user"
-import NavBarInput from "./NavBarInput"
+import { useDispatch, useSelector } from "react-redux";
+import { Navbar, Nav, Button } from "react-bootstrap";
+import "./NavBar.css";
+import { selectUser } from "../store/selectors/user";
+import NavBarInput from "./NavBarInput";
+import { removeUser } from "../store/actions/user";
 
 export default function NavBar() {
-  const user = useSelector(selectUser)
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -27,7 +29,7 @@ export default function NavBar() {
               <Button
                 variant="outline-danger"
                 style={{ width: "80px", marginLeft: "20px" }}
-                onClick={() => console.log("TODO USER LOG OUT")}
+                onClick={() => dispatch(removeUser())}
               >
                 Logout
               </Button>
@@ -38,5 +40,5 @@ export default function NavBar() {
         </Navbar.Collapse>
       </Navbar>
     </div>
-  )
+  );
 }

@@ -9,6 +9,9 @@ export default function reducer(state = initialState, action) {
     case "user/loginSuccess":
       localStorage.setItem("token", action.payload.token);
       return { ...state, ...action.payload };
+    case "user/remove":
+      localStorage.setItem("token", null);
+      return initialState;
     default:
       return state;
   }
