@@ -10,6 +10,10 @@ const loginSuccess = (userWithToken) => {
   };
 };
 
+export const removeUser = () => ({
+  type: "user/remove",
+});
+
 export const login = (email, password) => {
   return async (dispatch, getState) => {
     console.log(email, password);
