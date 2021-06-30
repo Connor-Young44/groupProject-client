@@ -15,17 +15,27 @@
 .watch-list-title p {
   font-size: 1rem;
   color: #888;
+  padding: 0 30% 0 0;
+}
+
+.watch-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .watch-list-item h3 {
-  margin: 0 10px 0 0;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  padding-right: 20px;
+  margin: 0;
 }
 
 .to-watch {
   color: #da0037 !important;
   border: 1px solid #da0037 !important;
   background-color: transparent !important;
+  min-width: 90px;
+  font-size: 0.8rem !important;
 }
 
 .to-watch:hover {
@@ -36,10 +46,39 @@
 
 .watched {
   color: #fff !important;
-  border: 1px solid #519872 !important;
-  background-color: #519872 !important;
+  border: 1px solid #444444 !important;
+  background-color: #444444 !important;
+  min-width: 90px;
+  font-size: 0.8rem !important;
 }
 
 .watched:hover {
   opacity: 0.8;
+}
+
+.list-group-scroll {
+  overflow-y: scroll;
+  max-height: 400px;
+}
+
+.list-group-item {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border: 1px solid #000 !important;
+  background-color: transparent !important;
+  padding: 20px 0 !important;
+}
+
+@media (max-width: 1200px) {
+  .list-group-item {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .watch-list-item h3 {
+    margin-bottom: 20px;
+  }
 }

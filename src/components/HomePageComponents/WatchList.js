@@ -19,31 +19,26 @@ export default function WatchList() {
   return (
     <div className="watch-list" style={{ margin: "0 20px" }}>
       <div className="watch-list-title">
-        <h2>Watch List</h2>
+        <h2>My Watch List ({movieList.length})</h2>
         <p>
-          Grab some popcorn and have fun with<br></br> your favorite movies and
-          series.
+          Grab some popcorn and have fun with your favorite movies and series.
         </p>
       </div>
 
-      <ListGroup variant="flush">
+      <ListGroup variant="flush" className="list-group-scroll">
         {movieList.map((item) => (
-          <ListGroup.Item
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              borderBottom: "1px solid #000",
-              padding: "20px 0",
-              backgroundColor: "transparent",
-            }}
-          >
+          <ListGroup.Item className="list-group-item">
             <div className="watch-list-item">
+              <img
+                src="https://cdn.pixabay.com/photo/2013/07/13/01/21/popcorn-155602_960_720.png"
+                style={{ width: "25px", marginRight: "10px" }}
+                alt="popcorn"
+              ></img>
               <h3>{item.title}</h3>
             </div>
 
             <Button className={item.status ? "watched" : "to-watch"}>
-              Watched
+              {item.status ? "watched" : "watched ?"}
             </Button>
           </ListGroup.Item>
         ))}

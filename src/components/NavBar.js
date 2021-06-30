@@ -4,7 +4,7 @@ import "./NavBar.css"
 import { selectUser } from "../store/selectors/user"
 import NavBarInput from "./NavBarInput"
 
-export default function NavBar() {
+export default function NavBar(props) {
   const user = useSelector(selectUser)
 
   return (
@@ -13,7 +13,7 @@ export default function NavBar() {
         <Navbar.Brand href="#home">
           <img
             style={{ width: "100px" }}
-            src="https://lh3.googleusercontent.com/proxy/vkIVaGYMY2ZHAg3iWofRfm-NLGbwRwnq8EvkIle8CglpwAJeJ4Fd5DXg7LcqZVYXu3doMItf_HQ2gGkDi7BUdhCj2yWH6mOrIHVwr1KkfCjVi7XFq4DRamVwz1jqQV4liBQOqtg"
+            src="https://cdn.pixabay.com/photo/2016/11/16/11/29/coupon-1828620_960_720.png"
             alt="movie poster"
           ></img>
         </Navbar.Brand>
@@ -31,6 +31,9 @@ export default function NavBar() {
               >
                 Logout
               </Button>
+              <button className="watch-list-toggle" onClick={props.onClick}>
+                <i class="fas fa-bars"></i>
+              </button>
             </>
           ) : (
             <NavBarInput />
