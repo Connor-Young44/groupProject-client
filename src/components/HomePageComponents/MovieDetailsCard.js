@@ -1,12 +1,17 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
+
+import { selectRandomMovie } from "../../store/selectors/imdb";
 
 export default function MovieDetailsCard(props) {
+  const randomMovie = useSelector(selectRandomMovie);
+  console.log(randomMovie);
   return (
     <div>
       <Card className="bg-dark text-white">
         <Card.Img
-          src="https://www.quirkybyte.com/wp-content/uploads/2017/12/13-1-1-780x405.jpg"
+          src={`https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`}
           alt="Card image"
           style={{
             opacity: "0.6",
@@ -34,7 +39,7 @@ export default function MovieDetailsCard(props) {
               }}
             >
               {/* Prop title */}
-              Dragon Ball Z - The movie
+              {randomMovie.title}
             </Card.Title>
             <Card.Text
               style={{
@@ -42,10 +47,7 @@ export default function MovieDetailsCard(props) {
               }}
             >
               {/* Prop movie description short */}
-              Natoque penatibus et magnis dis parturient montes nascetur
-              ridiculus mus mauris vitae ultricies leo integer malesuada nunc
-              vel risus commodo viverra maecenas accumsan lacus vel facilisis
-              volutpat est velit egestas
+              {randomMovie.overview}
             </Card.Text>
             <Card.Text></Card.Text>
             <div>

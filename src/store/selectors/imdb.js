@@ -1,1 +1,1 @@
-export const selectGenreArray = (state) => state.imdb;
+export const selectRandomMovie = (state) => state.imdb;

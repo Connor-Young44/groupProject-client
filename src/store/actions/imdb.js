@@ -1,55 +1,23 @@
 import axios from "axios";
 
-const fetchSuccess = (movesList) => {
+const fetchSuccess = (randomMovie) => {
   return {
     type: "imdb/fetchSuccess",
-    payload: movesList,
+    payload: randomMovie,
   };
 };
 
-export const fetchImdbById2 = (id) => {
-  return async (dispatch, getState) => {
-    const options = {
-      method: "GET",
-      url: "https://imdb8.p.rapidapi.com/title/get-overview-details",
-      params: { tconst: `tt${id}`, currentCountry: "US" },
-      headers: {
-        "x-rapidapi-key": "e3e0725195msh02662777bb9ed11p1fe8a6jsn5ddc19d44489",
-        "x-rapidapi-host": "imdb8.p.rapidapi.com",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+const getRandomMovie = (movieArray) => {
+  return (dispatch, getState) => {
+    dispatch(fetchSuccess(movieArray[Math.floor(Math.random() * 20)]));
   };
 };
 
-export const fetchImdbByGenre = (id) => {
+export const fetchMoviesList = (genre, minRat, page) => {
   return async (dispatch, getState) => {
-    var options = {
-      method: "GET",
-      url: "https://imdb8.p.rapidapi.com/title/get-popular-movies-by-genre",
-      params: { genre: "/chart/popular/genre/adventure" },
-      headers: {
-        "x-rapidapi-key": "e3e0725195msh02662777bb9ed11p1fe8a6jsn5ddc19d44489",
-        "x-rapidapi-host": "imdb8.p.rapidapi.com",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        // console.log(response.data);
-        dispatch(fetchSuccess(response.data));
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/discover/movie\?api_key\=45fa3d394cb065c5593ec76c8923671f\&language\=en-US\&sort_by\=popularity.desc\&include_adult\=false\&include_video\=false\&page\=${page}\&vote_average.gte\=${minRat}\&with_genres\=${genre}\&with_watch_monetization_types\=flatrate`
+    );
+    dispatch(getRandomMovie(response.data.results));
   };
 };
