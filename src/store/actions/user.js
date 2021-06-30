@@ -35,5 +35,6 @@ export const signup = (email, password) => {
     });
     console.log(response.data);
     dispatch(loginSuccess(response.data));
+    dispatch(fetchWatchList(response.data.id));
   };
 };
