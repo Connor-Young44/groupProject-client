@@ -1,82 +1,12 @@
-import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap"
+import { useSelector } from "react-redux"
+import { Navbar, Nav, Button } from "react-bootstrap"
 import "./NavBar.css"
-import { login, signup } from "../store/actions/user"
 import { selectUser } from "../store/selectors/user"
+import NavBarInput from "./NavBarInput"
 
 export default function NavBar() {
-  const dispatch = useDispatch()
   const user = useSelector(selectUser)
-
-  const LoginInput = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [loginMode, setLoginMode] = useState(true)
-
-    function handleSubmit(event) {
-      event.preventDefault()
-      if (loginMode) {
-        dispatch(login(email, password))
-      } else {
-        dispatch(signup(email, password))
-      }
-    }
-    return (
-      <div>
-        <div>
-          <Form inline onSubmit={handleSubmit}>
-            <FormControl
-              type="text"
-              placeholder="Email"
-              className="mr-sm-2"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <FormControl
-              type="password"
-              placeholder="Password"
-              className="mr-sm-2"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {user.email}
-            {loginMode ? (
-              <>
-                <Button
-                  type="submit"
-                  variant="outline-danger"
-                  style={{ width: "80px" }}
-                >
-                  Login
-                </Button>
-              </>
-            ) : (
-              <Button
-                type="submit"
-                variant="outline-success"
-                style={{ width: "80px" }}
-              >
-                Signup
-              </Button>
-            )}
-          </Form>
-        </div>
-        <div style={{ textAlign: "right" }}>
-          <Button
-            className="sign-up-button"
-            variant="link"
-            onClick={() => {
-              setLoginMode(!loginMode)
-            }}
-          >
-            {loginMode ? "Click here to Sign Up" : "Click here to Login"}
-          </Button>
-        </div>
-      </div>
-    )
-  }
-
+  const nameFromEmail = user.email.split("@")
   return (
     <div>
       <Navbar expand="lg" className="navBar">
@@ -93,17 +23,17 @@ export default function NavBar() {
 
           {user.email ? (
             <>
-              <h2>Welcome {user.email}</h2>
+              <h5>Welcome {nameFromEmail[0]}</h5>
               <Button
                 variant="outline-danger"
-                style={{ width: "80px" }}
+                style={{ width: "80px", marginLeft: "20px" }}
                 onClick={() => console.log("TODO USER LOG OUT")}
               >
                 Logout
               </Button>
             </>
           ) : (
-            <LoginInput />
+            <NavBarInput />
           )}
         </Navbar.Collapse>
       </Navbar>
