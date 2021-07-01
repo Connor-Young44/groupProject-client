@@ -72,7 +72,12 @@ export default function MovieDetailsCard(props) {
                   variant="light"
                   style={{ marginRight: "10px", width: "130px" }}
                   onClick={() =>
-                    dispatch(addMovieToList(user.id, randomMovie.title))
+                    dispatch(
+                      addMovieToList(
+                        user.id,
+                        randomMovie.title ? randomMovie.title : randomMovie.name
+                      )
+                    )
                   }
                 >
                   <i class="fas fa-plus-circle" style={{ color: "black" }}></i>{" "}
