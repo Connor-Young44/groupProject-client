@@ -1,21 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, Button } from "react-bootstrap";
-import "./NavBar.css";
-import { selectUser } from "../store/selectors/user";
-import NavBarInput from "./NavBarInput";
-import { logOut, removeUser } from "../store/actions/user";
+import { useDispatch, useSelector } from "react-redux"
+import { Navbar, Nav, Button } from "react-bootstrap"
+import "./NavBar.css"
+import { selectUser } from "../store/selectors/user"
+import NavBarInput from "./NavBarInput"
+import { logOut, removeUser } from "../store/actions/user"
 
 export default function NavBar(props) {
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch()
 
   return (
     <div>
       <Navbar expand="lg" className="navBar">
         <Navbar.Brand href="#home">
           <img
-            style={{ width: "100px" }}
-            src="https://lh3.googleusercontent.com/proxy/vkIVaGYMY2ZHAg3iWofRfm-NLGbwRwnq8EvkIle8CglpwAJeJ4Fd5DXg7LcqZVYXu3doMItf_HQ2gGkDi7BUdhCj2yWH6mOrIHVwr1KkfCjVi7XFq4DRamVwz1jqQV4liBQOqtg"
+            style={{ width: "200px" }}
+            src="../../logo.png"
             alt="movie poster"
           ></img>
         </Navbar.Brand>
@@ -43,5 +43,5 @@ export default function NavBar(props) {
         </Navbar.Collapse>
       </Navbar>
     </div>
-  );
+  )
 }
