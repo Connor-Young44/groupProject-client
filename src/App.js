@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 import WatchList from "./components/HomePageComponents/WatchList";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserWithStoredToken } from "./store/actions/user";
 import { selectUser } from "./store/selectors/user";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserWithStoredToken());
+  }, [dispatch]);
   const [watchListMode, setWatchListMode] = useState(false);
   const user = useSelector(selectUser);
   return (
