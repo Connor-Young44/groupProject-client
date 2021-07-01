@@ -11,3 +11,10 @@ export const setRatingRedux = (rating) => {
     payload: rating,
   };
 };
+
+export const setTypeRedux = (type) => {
+  return {
+    type: "filters/setType",
+    payload: type,
+  };
+};

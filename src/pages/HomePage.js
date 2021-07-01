@@ -6,7 +6,11 @@ import MovieDetailsCard from "../components/HomePageComponents/MovieDetailsCard"
 import "./HomePage.css";
 
 import { fetchMoviesList } from "../store/actions/imdb";
-import { setGenreRedux, setRatingRedux } from "../store/actions/filters";
+import {
+  setGenreRedux,
+  setRatingRedux,
+  setTypeRedux,
+} from "../store/actions/filters";
 
 import { selectFilters } from "../store/selectors/filters";
 
@@ -20,10 +24,11 @@ export default function HomePage() {
       fetchMoviesList(
         filters.genre,
         filters.minRat,
-        Math.ceil(Math.random() * 10)
+        Math.ceil(Math.random() * 10),
+        filters.type
       )
     );
-  }, [dispatch]);
+  }, [dispatch, filters]);
 
   console.log(filters);
 
@@ -32,12 +37,13 @@ export default function HomePage() {
       fetchMoviesList(
         filters.genre,
         filters.minRat,
-        Math.ceil(Math.random() * 10)
+        Math.ceil(Math.random() * 10),
+        filters.type
       )
     );
   };
 
-  const genreArray = [
+  const genreArrayMovies = [
     {
       id: 28,
       name: "Action",
@@ -115,6 +121,74 @@ export default function HomePage() {
       name: "Western",
     },
   ];
+  const genreArrayTv = [
+    {
+      id: 10759,
+      name: "Action & Adventure",
+    },
+    {
+      id: 16,
+      name: "Animation",
+    },
+    {
+      id: 35,
+      name: "Comedy",
+    },
+    {
+      id: 80,
+      name: "Crime",
+    },
+    {
+      id: 99,
+      name: "Documentary",
+    },
+    {
+      id: 18,
+      name: "Drama",
+    },
+    {
+      id: 10751,
+      name: "Family",
+    },
+    {
+      id: 10762,
+      name: "Kids",
+    },
+    {
+      id: 9648,
+      name: "Mystery",
+    },
+    {
+      id: 10763,
+      name: "News",
+    },
+    {
+      id: 10764,
+      name: "Reality",
+    },
+    {
+      id: 10765,
+      name: "Sci-Fi & Fantasy",
+    },
+    {
+      id: 10766,
+      name: "Soap",
+    },
+    {
+      id: 10767,
+      name: "Talk",
+    },
+    {
+      id: 10768,
+      name: "War & Politics",
+    },
+    {
+      id: 37,
+      name: "Western",
+    },
+  ];
+  const genreArray = filters.type === "movie" ? genreArrayMovies : genreArrayTv;
+
   const ratingArray = [
     { id: 1, name: 1 },
     { id: 2, name: 2 },
@@ -126,6 +200,11 @@ export default function HomePage() {
     { id: 8, name: 8 },
     { id: 9, name: 9 },
     { id: 10, name: 10 },
+  ];
+
+  const typeArray = [
+    { id: "movie", name: "Movie" },
+    { id: "tv", name: "Tv Series" },
   ];
 
   return (
@@ -142,7 +221,11 @@ export default function HomePage() {
           <Select title="Genre" array={genreArray} actionType={setGenreRedux} />
         </Col>
         <Col>
-          <Select title="Series/Film" />
+          <Select
+            title="Series/Film"
+            array={typeArray}
+            actionType={setTypeRedux}
+          />
         </Col>
       </Row>
       <Row>

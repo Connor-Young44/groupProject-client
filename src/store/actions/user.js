@@ -59,6 +59,7 @@ export const getUserWithStoredToken = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       dispatch(tokenStillValid(response.data));
+      dispatch(fetchWatchList(response.data.id));
     } catch (error) {
       if (error.response) {
         console.log(error.response.message);
