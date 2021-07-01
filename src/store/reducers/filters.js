@@ -8,6 +8,8 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "filters/setGenre":
       return { ...state, genre: action.payload };
+    case "filters/setRating":
+      return { ...state, minRat: action.payload };
     default:
       return state;
   }

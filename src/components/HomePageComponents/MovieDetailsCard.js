@@ -10,13 +10,20 @@ export default function MovieDetailsCard(props) {
   return (
     <div>
       <Card className="bg-dark text-white">
-        <Card.Img
-          src={`https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`}
-          alt="Card image"
-          style={{
-            opacity: "0.6",
-          }}
-        />
+        {randomMovie.backdrop_path ? (
+          <Card.Img
+            src={`https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`}
+            alt="Card image"
+            style={{
+              opacity: "0.6",
+            }}
+          />
+        ) : (
+          <Card.Img
+            src="http://www.mymetrotex.com/wp-content/uploads/2021/03/image-coming-soon-placeholder.png"
+            style={{ maxHeight: "600px" }}
+          />
+        )}
         <Card.ImgOverlay>
           <div
             style={{
