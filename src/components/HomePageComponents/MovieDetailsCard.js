@@ -55,6 +55,8 @@ export default function MovieDetailsCard(props) {
             <Card.Text
               style={{
                 fontSize: "1rem",
+                overflow: "auto",
+                maxHeight: "150px",
               }}
             >
               {/* Prop movie description short */}

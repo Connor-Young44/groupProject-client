@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Select from "../components/HomePageComponents/Select";
 import MovieDetailsCard from "../components/HomePageComponents/MovieDetailsCard";
 import "./HomePage.css";
@@ -209,31 +209,7 @@ export default function HomePage() {
 
   return (
     <Container>
-      <Row>
-        <Col>
-          <Select
-            title="Rating"
-            array={ratingArray}
-            actionType={setRatingRedux}
-          />
-        </Col>
-        <Col>
-          <Select title="Genre" array={genreArray} actionType={setGenreRedux} />
-        </Col>
-        <Col>
-          <Select
-            title="Series/Film"
-            array={typeArray}
-            actionType={setTypeRedux}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <MovieDetailsCard />
-        </Col>
-      </Row>
-      <Row>
+      <Row style={{ justifyContent: "center" }}>
         <button className="custom-button" onClick={randomButton}>
           <span></span>
           <span></span>
@@ -241,6 +217,30 @@ export default function HomePage() {
           <span></span>
           randomize!
         </button>
+      </Row>
+      <Row>
+        <Col>
+          <Select
+            title="Series/Film"
+            array={typeArray}
+            actionType={setTypeRedux}
+          />
+        </Col>
+        <Col>
+          <Select title="Genre" array={genreArray} actionType={setGenreRedux} />
+        </Col>
+        <Col>
+          <Select
+            title="Min Rating"
+            array={ratingArray}
+            actionType={setRatingRedux}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <MovieDetailsCard />
+        </Col>
       </Row>
     </Container>
   );

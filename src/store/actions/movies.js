@@ -34,3 +34,9 @@ export const fetchWatchList = (userId) => {
     dispatch(fetchSuccess(response.data));
   };
 };
+//delete movie
+export const deleteMovie = (id) => async (dispatch, getState) => {
+  const state = getState();
+  await axios.delete(`${apiUrl}/movies/deleteMovie/${id}`);
+  dispatch(fetchWatchList(state.user.id));
+};

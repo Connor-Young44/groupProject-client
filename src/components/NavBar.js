@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from "react-redux"
-import { Navbar, Nav, Button } from "react-bootstrap"
-import "./NavBar.css"
-import { selectUser } from "../store/selectors/user"
-import NavBarInput from "./NavBarInput"
-import { logOut, removeUser } from "../store/actions/user"
+import { useDispatch, useSelector } from "react-redux";
+import { Navbar, Nav, Button } from "react-bootstrap";
+import "./NavBar.css";
+import { selectUser } from "../store/selectors/user";
+import NavBarInput from "./NavBarInput";
+import { logOut } from "../store/actions/user";
 
 export default function NavBar(props) {
-  const user = useSelector(selectUser)
-  const dispatch = useDispatch()
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -43,5 +43,5 @@ export default function NavBar(props) {
         </Navbar.Collapse>
       </Navbar>
     </div>
-  )
+  );
 }
