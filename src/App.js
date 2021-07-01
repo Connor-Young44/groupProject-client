@@ -6,10 +6,10 @@ import "./App.css"
 import NavBar from "./components/NavBar"
 
 function App() {
-  const [watchListMode, setWatchListMode] = useState(true)
+  const [watchListMode, setWatchListMode] = useState(false)
   return (
     <div className="App">
-      <NavBar />
+      <NavBar onClick={() => setWatchListMode(!watchListMode)} />
       <div className="App-body">
         <div className="page-layout">
           <HomePage />

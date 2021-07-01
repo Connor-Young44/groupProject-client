@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Navbar, Nav, Button } from "react-bootstrap";
-import "./NavBar.css";
-import { selectUser } from "../store/selectors/user";
-import NavBarInput from "./NavBarInput";
-import { removeUser } from "../store/actions/user";
+import { useDispatch, useSelector } from "react-redux"
+import { Navbar, Nav, Button } from "react-bootstrap"
+import "./NavBar.css"
+import { selectUser } from "../store/selectors/user"
+import NavBarInput from "./NavBarInput"
+import { removeUser } from "../store/actions/user"
 
-export default function NavBar() {
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
+export default function NavBar(props) {
+  const user = useSelector(selectUser)
+  const dispatch = useDispatch()
 
   return (
     <div>
@@ -33,6 +33,9 @@ export default function NavBar() {
               >
                 Logout
               </Button>
+              <button className="watch-list-toggle" onClick={props.onClick}>
+                <i class="fas fa-video"></i> My List
+              </button>
             </>
           ) : (
             <NavBarInput />
@@ -40,5 +43,5 @@ export default function NavBar() {
         </Navbar.Collapse>
       </Navbar>
     </div>
-  );
+  )
 }

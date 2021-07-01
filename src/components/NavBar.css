@@ -13,3 +13,20 @@
 .sign-up-button:hover {
   color: #ededed;
 }
+
+.watch-list-toggle {
+  height: 40px;
+  width: 100px;
+  font-size: 1rem;
+  color: #da0037;
+  border: 1px solid #da0037;
+  background-color: transparent;
+  margin-left: 20px;
+  border-radius: 4px;
+}
+
+.watch-list-toggle:hover {
+  color: #fff;
+  border: 1px solid #da0037;
+  background-color: #da0037;
+}
