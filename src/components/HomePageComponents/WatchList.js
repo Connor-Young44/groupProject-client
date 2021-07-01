@@ -1,20 +1,13 @@
-import React from "react"
-import { ListGroup, Button, Row } from "react-bootstrap"
-import "./WatchList.css"
+import React from "react";
+import { ListGroup, Button, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleWatched } from "../../store/actions/movies";
+import { selectMovies } from "../../store/selectors/movies";
+import "./WatchList.css";
 
 export default function WatchList() {
-  const movieList = [
-    { title: "Spider Man", status: false },
-    { title: "Spider Man", status: false },
-    {
-      title: "Spider Man is the best hero ever forever whenever",
-      status: false,
-    },
-    { title: "Spider Man", status: true },
-    { title: "Spider Man", status: false },
-    { title: "Spider Man", status: true },
-    { title: "Spider Man", status: false },
-  ]
+  const movieList = useSelector(selectMovies);
+  const dispatch = useDispatch();
 
   return (
     <div className="watch-list" style={{ margin: "0 20px" }}>
@@ -42,12 +35,15 @@ export default function WatchList() {
               <h3>{item.title}</h3>
             </div>
 
-            <Button className={item.status ? "watched" : "to-watch"}>
+            <Button
+              className={item.isWatched ? "watched" : "to-watch"}
+              onClick={() => dispatch(toggleWatched(item.id))}
+            >
               Watched
             </Button>
           </ListGroup.Item>
         ))}
       </ListGroup>
     </div>
-  )
+  );
 }

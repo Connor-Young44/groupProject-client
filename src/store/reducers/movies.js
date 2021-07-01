@@ -1,11 +1,11 @@
-const initialState = {
-  message: "empty",
-};
+const initialState = [];
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "movies/fetchSuccess":
-      return { ...action.payload };
+      return [...action.payload];
+    case "remove/watchList":
+      return initialState;
     default:
       return state;
   }
