@@ -1,11 +1,15 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addMovieToList } from "../../store/actions/movies";
 
 import { selectRandomMovie } from "../../store/selectors/imdb";
+import { selectUser } from "../../store/selectors/user";
 
 export default function MovieDetailsCard(props) {
   const randomMovie = useSelector(selectRandomMovie);
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
   console.log(randomMovie);
   return (
     <div>
@@ -58,20 +62,18 @@ export default function MovieDetailsCard(props) {
             </Card.Text>
             <Card.Text></Card.Text>
             <div>
-              <Button
-                variant="light"
-                style={{ marginRight: "10px", width: "130px" }}
-              >
-                <i class="fas fa-plus-circle" style={{ color: "black" }}></i>{" "}
-                Add to list
-              </Button>
-              <Button
-                variant="dark"
-                style={{ marginRight: "10px", width: "130px" }}
-              >
-                <i class="fas fa-info-circle" style={{ color: "white" }}></i>{" "}
-                More Info
-              </Button>
+              {user.id && (
+                <Button
+                  variant="light"
+                  style={{ marginRight: "10px", width: "130px" }}
+                  onClick={() =>
+                    dispatch(addMovieToList(user.id, randomMovie.title))
+                  }
+                >
+                  <i class="fas fa-plus-circle" style={{ color: "black" }}></i>{" "}
+                  Add to list
+                </Button>
+              )}
             </div>
           </div>
         </Card.ImgOverlay>

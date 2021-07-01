@@ -1,4 +1,4 @@
-import { fetchWatchList } from "./movies";
+import { fetchWatchList, removeWatchList } from "./movies";
 
 import axios from "axios";
 const apiUrl = "http://localhost:4000";
@@ -10,9 +10,14 @@ const loginSuccess = (userWithToken) => {
   };
 };
 
-export const removeUser = () => ({
+const removeUser = () => ({
   type: "user/remove",
 });
+
+export const logOut = () => (dispatch, getState) => {
+  dispatch(removeUser());
+  dispatch(removeWatchList());
+};
 
 export const login = (email, password) => {
   return async (dispatch, getState) => {

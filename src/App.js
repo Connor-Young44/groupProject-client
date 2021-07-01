@@ -1,12 +1,15 @@
-import { useState } from "react"
-import HomePage from "./pages/HomePage"
-import WatchList from "./components/HomePageComponents/WatchList"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "./App.css"
-import NavBar from "./components/NavBar"
+import { useState } from "react";
+import HomePage from "./pages/HomePage";
+import WatchList from "./components/HomePageComponents/WatchList";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import NavBar from "./components/NavBar";
+import { useSelector } from "react-redux";
+import { selectUser } from "./store/selectors/user";
 
 function App() {
-  const [watchListMode, setWatchListMode] = useState(false)
+  const [watchListMode, setWatchListMode] = useState(false);
+  const user = useSelector(selectUser);
   return (
     <div className="App">
       <NavBar onClick={() => setWatchListMode(!watchListMode)} />
@@ -15,14 +18,14 @@ function App() {
           <HomePage />
         </div>
 
-        {watchListMode && (
+        {watchListMode && user.id && (
           <div className="side-bar">
             <WatchList />
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
