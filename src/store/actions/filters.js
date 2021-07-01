@@ -4,3 +4,10 @@ export const setGenreRedux = (genreId) => {
     payload: genreId,
   };
 };
+
+export const setRatingRedux = (rating) => {
+  return {
+    type: "filters/setRating",
+    payload: rating,
+  };
+};

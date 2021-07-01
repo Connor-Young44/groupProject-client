@@ -6,7 +6,7 @@ import MovieDetailsCard from "../components/HomePageComponents/MovieDetailsCard"
 import "./HomePage.css";
 
 import { fetchMoviesList } from "../store/actions/imdb";
-import { setGenreRedux } from "../store/actions/filters";
+import { setGenreRedux, setRatingRedux } from "../store/actions/filters";
 
 import { selectFilters } from "../store/selectors/filters";
 
@@ -16,13 +16,25 @@ export default function HomePage() {
   const filters = useSelector(selectFilters);
 
   useEffect(() => {
-    dispatch(fetchMoviesList(filters.genre, 5, Math.ceil(Math.random() * 10)));
+    dispatch(
+      fetchMoviesList(
+        filters.genre,
+        filters.minRat,
+        Math.ceil(Math.random() * 10)
+      )
+    );
   }, [dispatch]);
 
   console.log(filters);
 
   const randomButton = (e) => {
-    dispatch(fetchMoviesList(filters.genre, 5, Math.ceil(Math.random() * 10)));
+    dispatch(
+      fetchMoviesList(
+        filters.genre,
+        filters.minRat,
+        Math.ceil(Math.random() * 10)
+      )
+    );
   };
 
   const genreArray = [
@@ -103,12 +115,28 @@ export default function HomePage() {
       name: "Western",
     },
   ];
+  const ratingArray = [
+    { id: 1, name: 1 },
+    { id: 2, name: 2 },
+    { id: 3, name: 3 },
+    { id: 4, name: 4 },
+    { id: 5, name: 5 },
+    { id: 6, name: 6 },
+    { id: 7, name: 7 },
+    { id: 8, name: 8 },
+    { id: 9, name: 9 },
+    { id: 10, name: 10 },
+  ];
 
   return (
     <Container>
       <Row>
         <Col>
-          <Select title="Country" />
+          <Select
+            title="Rating"
+            array={ratingArray}
+            actionType={setRatingRedux}
+          />
         </Col>
         <Col>
           <Select title="Genre" array={genreArray} actionType={setGenreRedux} />
