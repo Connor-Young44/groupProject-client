@@ -50,7 +50,7 @@ export default function MovieDetailsCard(props) {
               }}
             >
               {/* Prop title */}
-              {randomMovie.title}
+              {randomMovie.title ? randomMovie.title : randomMovie.name}
             </Card.Title>
             <Card.Text
               style={{
@@ -58,6 +58,11 @@ export default function MovieDetailsCard(props) {
               }}
             >
               {/* Prop movie description short */}
+              {
+                <p>
+                  <b>Rating: {randomMovie.vote_average}</b>
+                </p>
+              }
               {randomMovie.overview}
             </Card.Text>
             <Card.Text></Card.Text>
