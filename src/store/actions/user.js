@@ -1,4 +1,5 @@
 import { fetchWatchList, removeWatchList } from "./movies";
+import { selectToken } from "../selectors/user";
 
 import axios from "axios";
 const apiUrl = "http://localhost:4000";
@@ -41,5 +42,30 @@ export const signup = (email, password) => {
     console.log(response.data);
     dispatch(loginSuccess(response.data));
     dispatch(fetchWatchList(response.data.id));
+  };
+};
+
+const tokenStillValid = (userWithToken) => ({
+  type: "user/fetchFromValidToken",
+  payload: userWithToken,
+});
+
+export const getUserWithStoredToken = () => {
+  return async (dispatch, getState) => {
+    const token = selectToken(getState());
+    if (token === null) return;
+    try {
+      const response = await axios.get(`${apiUrl}/users/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      dispatch(tokenStillValid(response.data));
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.message);
+      } else {
+        console.log(error);
+      }
+      dispatch(logOut());
+    }
   };
 };

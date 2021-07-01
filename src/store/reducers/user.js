@@ -6,6 +6,8 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case "user/fetchFromValidToken":
+      return { ...state, ...action.payload };
     case "user/loginSuccess":
       localStorage.setItem("token", action.payload.token);
       return { ...state, ...action.payload };
