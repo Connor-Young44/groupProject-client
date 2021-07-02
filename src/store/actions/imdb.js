@@ -26,12 +26,21 @@ const failSafe = [
 export const fetchMoviesList = (genre, minRat, page, type) => {
   return async (dispatch, getState) => {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/discover/${type}\?api_key\=45fa3d394cb065c5593ec76c8923671f\&language\=en-US\&sort_by\=popularity.desc\&page\=${page}\&vote_average.gte\=${minRat}\&with_genres\=${genre}\&with_watch_monetization_types\=flatrate`
+      `https://api.themoviedb.org/3/discover/${type}?api_key=45fa3d394cb065c5593ec76c8923671f&language=en-US&sort_by=popularity.desc&page=${page}&vote_average.gte=${minRat}&with_genres=${genre}&with_watch_monetization_types=flatrate`
     );
     if (response.data.results.length > 0) {
       dispatch(getRandomMovie(response.data.results));
     } else {
       dispatch(getRandomMovie(failSafe));
     }
+  };
+};
+
+export const fetchThisMovie = (id, type) => {
+  return async (dispatch, getState) => {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/${type}/${id}?api_key=45fa3d394cb065c5593ec76c8923671f&language=en-US`
+    );
+    dispatch(fetchSuccess(response.data));
   };
 };

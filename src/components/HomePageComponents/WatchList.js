@@ -1,6 +1,7 @@
 import React from "react";
 import { ListGroup, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchThisMovie } from "../../store/actions/imdb";
 import { deleteMovie, toggleWatched } from "../../store/actions/movies";
 import { selectMovies } from "../../store/selectors/movies";
 import "./WatchList.css";
@@ -22,6 +23,7 @@ export default function WatchList() {
       <ListGroup className="scroll-side" variant="flush">
         {movieList.map((item) => (
           <ListGroup.Item
+            key={item.id}
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -36,9 +38,14 @@ export default function WatchList() {
                 className="delete-button"
                 onClick={() => dispatch(deleteMovie(item.id))}
               >
-                <i class="far fa-trash-alt"></i>
+                <i className="far fa-trash-alt"></i>
               </button>
-              <h3>{item.title}</h3>
+              <button
+                className="link-button"
+                onClick={() => dispatch(fetchThisMovie(item.tmdbId, item.type))}
+              >
+                <h3>{item.title}</h3>
+              </button>
             </div>
 
             <Button

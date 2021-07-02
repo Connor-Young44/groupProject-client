@@ -10,7 +10,6 @@ export default function MovieDetailsCard(props) {
   const randomMovie = useSelector(selectRandomMovie);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  console.log(randomMovie);
   return (
     <div>
       <Card className="bg-dark text-white">
@@ -61,9 +60,10 @@ export default function MovieDetailsCard(props) {
             >
               {/* Prop movie description short */}
               {
-                <p>
+                <>
                   <b>Rating: {randomMovie.vote_average}</b>
-                </p>
+                  <br></br>
+                </>
               }
               {randomMovie.overview}
             </Card.Text>
@@ -77,12 +77,19 @@ export default function MovieDetailsCard(props) {
                     dispatch(
                       addMovieToList(
                         user.id,
-                        randomMovie.title ? randomMovie.title : randomMovie.name
+                        randomMovie.title
+                          ? randomMovie.title
+                          : randomMovie.name,
+                        Number(randomMovie.id),
+                        randomMovie.title ? "movie" : "tv"
                       )
                     )
                   }
                 >
-                  <i class="fas fa-plus-circle" style={{ color: "black" }}></i>{" "}
+                  <i
+                    className="fas fa-plus-circle"
+                    style={{ color: "black" }}
+                  ></i>{" "}
                   Add to list
                 </Button>
               )}

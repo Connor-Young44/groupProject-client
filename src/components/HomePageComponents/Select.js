@@ -8,7 +8,7 @@ export default function Select(props) {
   return (
     <div>
       <Form>
-        <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Group>
           <Form.Label>{title}</Form.Label>
           <Form.Control
             onChange={(e) => dispatch(actionType(e.target.value))}

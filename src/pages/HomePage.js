@@ -30,8 +30,6 @@ export default function HomePage() {
     );
   }, [dispatch, filters]);
 
-  console.log(filters);
-
   const randomButton = (e) => {
     dispatch(
       fetchMoviesList(

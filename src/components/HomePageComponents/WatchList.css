@@ -61,3 +61,8 @@
 .delete-button:hover {
   color: #da0037;
 }
+
+.link-button {
+  background-color: transparent;
+  border: none;
+}

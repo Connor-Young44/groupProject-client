@@ -12,7 +12,7 @@ export default function NavBar(props) {
   return (
     <div>
       <Navbar expand="lg" className="navBar">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand>
           <img
             style={{ width: "200px" }}
             src="../../logo.png"
@@ -34,7 +34,7 @@ export default function NavBar(props) {
                 Logout
               </Button>
               <button className="watch-list-toggle" onClick={props.onClick}>
-                <i class="fas fa-video"></i> My List
+                <i className="fas fa-video"></i> My List
               </button>
             </>
           ) : (

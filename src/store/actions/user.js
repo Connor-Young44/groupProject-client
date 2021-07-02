@@ -22,7 +22,6 @@ export const logOut = () => (dispatch, getState) => {
 
 export const login = (email, password) => {
   return async (dispatch, getState) => {
-    console.log(email, password);
     const response = await axios.post(`${apiUrl}/users/login`, {
       email: email,
       password: password,
@@ -39,7 +38,6 @@ export const signup = (email, password) => {
       email,
       password,
     });
-    console.log(response.data);
     dispatch(loginSuccess(response.data));
     dispatch(fetchWatchList(response.data.id));
   };
