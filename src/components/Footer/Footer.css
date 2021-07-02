@@ -1,0 +1,26 @@
+.api-at {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  text-align: center;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.api-at img {
+  width: 200px;
+  padding: 15px 0;
+}
+
+.authors {
+  text-align: center;
+  background-color: #171717;
+  padding: 15px;
+  color: #777;
+}
+
+.authors p {
+  margin: 0;
+}

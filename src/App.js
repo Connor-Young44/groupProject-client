@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
-import HomePage from "./pages/HomePage";
-import WatchList from "./components/HomePageComponents/WatchList";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import NavBar from "./components/NavBar";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserWithStoredToken } from "./store/actions/user";
-import { selectUser } from "./store/selectors/user";
+import { useEffect, useState } from "react"
+import HomePage from "./pages/HomePage"
+import WatchList from "./components/HomePageComponents/WatchList"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./App.css"
+import Footer from "./components/Footer/Footer"
+import NavBar from "./components/NavBar"
+import { useDispatch, useSelector } from "react-redux"
+import { getUserWithStoredToken } from "./store/actions/user"
+import { selectUser } from "./store/selectors/user"
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getUserWithStoredToken());
-  }, [dispatch]);
-  const [watchListMode, setWatchListMode] = useState(false);
-  const user = useSelector(selectUser);
+    dispatch(getUserWithStoredToken())
+  }, [dispatch])
+  const [watchListMode, setWatchListMode] = useState(false)
+  const user = useSelector(selectUser)
   return (
     <div className="App">
       <NavBar onClick={() => setWatchListMode(!watchListMode)} />
@@ -30,8 +31,9 @@ function App() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
