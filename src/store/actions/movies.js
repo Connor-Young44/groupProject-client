@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiUrl = "http://localhost:4000";
+const apiUrl = "https://random-entertain.herokuapp.com";
 
 const fetchSuccess = (movesList) => {
   return {

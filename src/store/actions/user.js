@@ -2,7 +2,7 @@ import { fetchWatchList, removeWatchList } from "./movies";
 import { selectToken } from "../selectors/user";
 
 import axios from "axios";
-const apiUrl = "http://localhost:4000";
+const apiUrl = "https://random-entertain.herokuapp.com";
 
 const loginSuccess = (userWithToken) => {
   return {
